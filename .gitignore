@@ -26,3 +26,6 @@ terraform.tfstate
 .logfire
 
 infra/deploy/ansible/inventory
+
+# ssh
+.ssh/
