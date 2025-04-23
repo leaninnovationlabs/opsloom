@@ -29,3 +29,8 @@ infra/deploy/ansible/inventory
 
 # ssh
 .ssh/
+
+# langgraph
+.langgraph/
+.langgraph-cache/
+.langgraph_api/

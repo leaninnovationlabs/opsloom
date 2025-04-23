@@ -1,0 +1,8 @@
+{
+  "graphs": {
+    "Workflow Agent": "backend/api/assistant/impl/workflow_agent/graph.py:create_graph"
+  },
+  "dependencies": [
+    "langchain" 
+  ]
+} 

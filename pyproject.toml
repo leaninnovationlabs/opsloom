@@ -50,4 +50,9 @@ dependencies = [
     "transformers>=4.48.2",
     "openai>=1.59.8",
     "pgvector>=0.3.6",
+    "langgraph>=0.3.31",
+    "langgraph-cli>=0.2.5",
+    "langgraph-api>=0.1.9",
+    "langgraph-runtime-inmem>=0.0.4",
+    "langchain-openai>=0.1.25",
 ]
