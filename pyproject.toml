@@ -51,3 +51,7 @@ dependencies = [
     "openai>=1.59.8",
     "pgvector>=0.3.6",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+asyncio_mode = "strict"

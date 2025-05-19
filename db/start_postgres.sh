@@ -28,5 +28,11 @@ else
     -e POSTGRES_USER="$DB_USER" \
     -e POSTGRES_PASSWORD="$DB_PASSWORD" \
     -p 5432:5432 \
-    pgvector/pgvector:pg16
+pgvector/pgvector:pg16
 fi
+
+echo "Waiting for Postgres to be ready..."
+until sudo docker exec "$CONTAINER_NAME" pg_isready -U "$DB_USER" >/dev/null 2>&1; do
+  sleep 1
+done
+echo "Postgres is ready."
