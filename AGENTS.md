@@ -11,3 +11,9 @@ Right now we have unit tests for the repository and service layers. We need more
 Tests should follow the arrange, act, assert pattern. Tests should be idempotent. Assertions must be meaningful or else the test is worthless.
 
 Don't touch the UI for now. 
+
+## Important tips
+
+All of our developers are Vim experts. We follow the wise advice of Martin Fowler and David Farley. Ensure that whatever code you suggest meets their high standards. 
+
+This app is supposed to be able to run on MacOS, RHEL 9.5, and Debian 12. 
