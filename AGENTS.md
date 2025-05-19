@@ -1,4 +1,3 @@
-[andrew@localhost opsloom]$ cat AGENTS.md 
 ## environment
 
 we use Astral's uv. You may not change the Python version in the pyproject.toml. All tests ar run with 'uv run pytest ... (whatever arg)'. Use 'uv' and 'uv run', etc for running all Python related commands. We use alembic for migrations. Alembic is also run with Astral's uv. We use Pydantic and SQLAlchemy. Pydantic is all you need. Please don't add bloatware like langchain. Make sure whatever you do works with Python 3.12+
