@@ -7,10 +7,10 @@ from .schemas import (
     CreateReservationRequest,
     ActionURLSchema  # Import the new schema
 )
-from backend.util.logging import SetupLogging
+import logging
 from backend.util.config import get_config_value
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 EXTERNAL_API_BASE_URL = get_config_value("EXTERNAL_API_BASE_URL")
 

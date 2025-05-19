@@ -3,7 +3,7 @@ from typing import Optional
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
-from backend.util.logging import SetupLogging
+import logging
 
 from backend.api.account.account_schema import AccountORM
 from backend.api.account.models import (
@@ -18,7 +18,7 @@ from backend.lib.exceptions import (
     AccountNotFoundError
 )
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class AccountRepository:
     """

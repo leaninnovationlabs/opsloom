@@ -4,11 +4,11 @@ from fastapi.responses import StreamingResponse
 from backend.api.chat.models import ChatRequest, FeedbackRequest, MessageList
 from backend.api.chat.services import ChatService
 from backend.util.auth_utils import validate_user, TokenData
-from backend.util.logging import SetupLogging
+import logging
 from backend.util.database import get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 router = APIRouter()
 
 @router.post("")

@@ -4,10 +4,10 @@ from backend.api.index.models import IndexResponse
 from backend.util.auth_utils import validate_user, TokenData
 from backend.api.index.service import IndexService
 from backend.util.database import get_async_session
-from backend.util.logging import SetupLogging
+import logging
 
 router = APIRouter()
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 @router.post("", response_model=IndexResponse)
 async def index_document(

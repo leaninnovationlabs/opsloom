@@ -7,9 +7,9 @@ from sqlalchemy.sql import func
 
 from backend.api.session.session_schema import SessionORM
 from backend.api.session.models import UserSession, SessionList
-from backend.util.logging import SetupLogging
+import logging
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class SessionRepository:
     """

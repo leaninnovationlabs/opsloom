@@ -10,9 +10,9 @@ from backend.api.kbase.models import Document, Chunk
 from backend.api.kbase.pgvectorstore import PostgresVectorStore
 from backend.api.kbase.embedder_factory import get_embedder  # The embedder factory
 from sqlalchemy.ext.asyncio import AsyncSession
-from backend.util.logging import SetupLogging
+import logging
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class IndexService:
     def __init__(self, kbase_name: str, session: AsyncSession):

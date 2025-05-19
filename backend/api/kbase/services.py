@@ -2,9 +2,9 @@ from typing import Optional
 from uuid import UUID
 from backend.api.kbase.models import KnowledgeBase, KnowledgeBaseList
 from .repository import KbaseRepository
-from backend.util.logging import SetupLogging
+import logging
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class KbaseService:
     __slots__ = ("repository",)

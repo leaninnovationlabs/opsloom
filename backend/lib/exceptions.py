@@ -1,8 +1,8 @@
 from fastapi import Request
 from fastapi.responses import JSONResponse
-from backend.util.logging import SetupLogging
+import logging
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class AccountAlreadyExistsError(Exception):
     """Raised when an account with the given short_code or email already exists."""

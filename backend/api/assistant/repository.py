@@ -14,9 +14,9 @@ from backend.lib.exceptions import (
     DatabaseError
 )
 from backend.util.config import get_config
-from backend.util.logging import SetupLogging
+import logging
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class AssistantRepository:
     __slots__ = ("session",)

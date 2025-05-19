@@ -6,12 +6,12 @@ from backend.api.session.models import (
 )
 from backend.api.session.services import SessionService
 from backend.util.auth_utils import validate_user, TokenData
-from backend.util.logging import SetupLogging
+import logging
 from backend.util.database import get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
 
 router = APIRouter()
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 @router.post("", response_model=SessionResponse)
 async def create_session(

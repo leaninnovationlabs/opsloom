@@ -5,7 +5,7 @@ from typing import Optional
 from sqlalchemy.ext.asyncio import AsyncSession
 from backend.util.database import get_async_session
 
-from backend.util.logging import SetupLogging
+import logging
 from backend.util.auth_utils import validate_user, TokenData, create_access_token
 from backend.util.domain_utils import extract_subdomain
 from backend.util.token_blacklist import add_token_to_blacklist
@@ -17,7 +17,7 @@ from backend.api.account.services import AccountService
 
 from .session import UserManager
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 router = APIRouter()
 
 @router.post("/validate")

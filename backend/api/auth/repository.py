@@ -7,9 +7,9 @@ from sqlalchemy.sql import func
 
 from backend.api.auth.user_schema import UserORM
 from backend.api.auth.models import User
-from backend.util.logging import SetupLogging
+import logging
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class UserRepository:
     """

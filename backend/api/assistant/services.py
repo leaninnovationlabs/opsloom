@@ -4,9 +4,9 @@ from backend.api.assistant.models import (
     Assistant, AssistantList
 )
 from .repository import AssistantRepository
-from backend.util.logging import SetupLogging
+import logging
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class AssistantService:
     """

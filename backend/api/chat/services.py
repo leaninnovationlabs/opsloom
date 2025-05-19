@@ -20,10 +20,10 @@ from backend.api.session.models import UserSession
 from backend.api.session.repository import SessionRepository
 from backend.api.assistant.repository import AssistantRepository
 from backend.api.kbase.repository import KbaseRepository
-from backend.util.logging import SetupLogging
+import logging
 from backend.util.auth_utils import TokenData
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class ChatService:
     """

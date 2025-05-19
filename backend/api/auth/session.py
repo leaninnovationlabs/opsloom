@@ -2,9 +2,9 @@ from backend.api.auth.models import User, UserCreate, LoggedInUser, UserLogin
 from backend.api.account.services import AccountService
 from backend.api.auth.repository import UserRepository
 from backend.util.auth_utils import TokenData, create_access_token, PasswordService
-from backend.util.logging import SetupLogging
+import logging
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class UserManager:
     __slots__ = ("user_repository", "account_service", "password_service")

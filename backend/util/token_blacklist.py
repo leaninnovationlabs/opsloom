@@ -1,9 +1,9 @@
 import time
 from typing import Dict, Optional
 from datetime import datetime
-from backend.util.logging import SetupLogging
+import logging
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class InMemoryTokenBlacklist:
     """

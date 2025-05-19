@@ -7,13 +7,13 @@ from argon2 import PasswordHasher
 from typing import Optional, Dict, Any
 from pydantic import BaseModel
 from datetime import datetime, timedelta, timezone
-from backend.util.logging import SetupLogging
+import logging
 from backend.util.config import get_config_value
 from backend.util.domain_utils import extract_subdomain
 from backend.util.token_blacklist import check_token_blacklist
 import os
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 # Load environment variables
 load_dotenv()

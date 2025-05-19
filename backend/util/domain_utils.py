@@ -1,7 +1,7 @@
 from fastapi import Request
-from backend.util.logging import SetupLogging
+import logging
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 def extract_subdomain(request: Request) -> str:
     """

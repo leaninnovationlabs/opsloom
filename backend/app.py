@@ -28,12 +28,13 @@ from backend.lib.exceptions import (
     DatabaseError
 )
 from backend.util.config import get_config
-from backend.util.logging import SetupLogging
+from backend.util.logging import setup_logging
+import logging
 from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
 import os 
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 limiter = Limiter(key_func=get_remote_address)
 
 secret_key = os.getenv("SECRET_KEY")
@@ -57,6 +58,7 @@ if get_config_value("STATIC") == "true":
             return response
 
 def create_app():
+    setup_logging()
     # Load config
     config = get_config()
     print(config.keys())

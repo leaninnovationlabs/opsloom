@@ -9,10 +9,10 @@ from backend.api.kbase.repository import KbaseRepository
 from backend.api.chat.repository import ChatRepository, AgentMessagesRepository
 from backend.api.session.repository import SessionRepository
 from backend.api.chat.models import ChatRequest
-from backend.util.logging import SetupLogging
+import logging
 from backend.util.auth_utils import TokenData
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class AIResponseService:
     """

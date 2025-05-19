@@ -12,10 +12,10 @@ from backend.lib.exceptions import (
     AccountNotFoundError
 )
 from backend.util.auth_utils import validate_user, TokenData
-from backend.util.logging import SetupLogging
+import logging
 from backend.util.database import get_async_session
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 router = APIRouter()
 
 @router.post("", response_model=AccountResponse)

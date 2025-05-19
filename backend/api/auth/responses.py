@@ -2,10 +2,10 @@ import json
 from fastapi import Response
 from backend.api.auth.models import LoggedInUser, User
 from backend.util.config import get_config_value
-from backend.util.logging import SetupLogging
+import logging
 import os
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 def get_cookie_domain():
     """Helper to determine cookie domain based on config"""

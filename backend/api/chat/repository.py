@@ -11,11 +11,11 @@ from backend.api.chat.models import (
     AgentMessages,
     MessageBlock,
 )
-from backend.util.logging import SetupLogging
+import logging
 from sqlalchemy.sql import func
 from pydantic_ai.messages import ModelMessagesTypeAdapter
 
-logger = SetupLogging()
+logger = logging.getLogger(__name__)
 
 class ChatRepository:
     """
