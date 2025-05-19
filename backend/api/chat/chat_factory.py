@@ -2,6 +2,7 @@
 from typing import Optional
 from backend.api.chat.chat_model_base import BaseChatModel
 from backend.api.chat.chat_models.openai import OpenAIChatModel
+from backend.api.chat.chat_models.bedrock import BedrockChatModel
 
 class ChatFactory:
     @staticmethod
@@ -26,7 +27,9 @@ class ChatFactory:
         Raises:
             ValueError: If an unsupported provider is specified.
         """
-        if provider.lower() == "openai":
+        provider = provider.lower()
+        if provider == "openai":
             return OpenAIChatModel(model=model, temperature=temperature, api_key=api_key)
-        # Add additional provider checks here as you implement new chat models.
+        if provider == "bedrock":
+            return BedrockChatModel(model=model, temperature=temperature)
         raise ValueError(f"Unsupported provider: {provider}")
