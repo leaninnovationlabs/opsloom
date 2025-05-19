@@ -30,3 +30,9 @@ else
     -p 5432:5432 \
     pgvector/pgvector:pg16
 fi
+
+# Wait for Postgres to be ready before returning
+until sudo docker exec "$CONTAINER_NAME" pg_isready -U "$DB_USER" >/dev/null 2>&1; do
+  echo "Waiting for Postgres to be ready..."
+  sleep 1
+done
