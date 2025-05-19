@@ -4,7 +4,13 @@ import json
 from sqlalchemy import select, update, desc
 from sqlalchemy.exc import SQLAlchemyError
 from backend.api.chat.chat_schema import MessageORM, AgentMessageORM
-from backend.api.chat.models import MessagePair, MessageList, Message, AgentMessages
+from backend.api.chat.models import (
+    MessagePair,
+    MessageList,
+    Message,
+    AgentMessages,
+    MessageBlock,
+)
 from backend.util.logging import SetupLogging
 from sqlalchemy.sql import func
 from pydantic_ai.messages import ModelMessagesTypeAdapter
@@ -29,9 +35,9 @@ class ChatRepository:
                 session_id=message_pair.session_id,
                 user_id=message_pair.user_id,
                 account_id=message_pair.account_id,
-                user_message=message_pair.user_message.blocks, 
-                ai_message=message_pair.ai_message.blocks,
-                feedback=message_pair.feedback
+                user_message=[b.model_dump() for b in message_pair.user_message.blocks],
+                ai_message=[b.model_dump() for b in message_pair.ai_message.blocks],
+                feedback=message_pair.feedback,
             )
             self.session.add(message_orm)
             await self.session.commit()
@@ -54,21 +60,21 @@ class ChatRepository:
 
             messages = []
             for row in rows:
-                # Build user message
+                user_blocks = [MessageBlock(**b) for b in (row.user_message or [])]
                 user_msg = Message(
                     role="user",
                     content="",
-                    blocks=row.user_message or [],
-                    message_id=row.id
+                    blocks=user_blocks,
+                    message_id=row.id,
                 )
                 messages.append(user_msg)
 
-                # Build AI message
+                ai_blocks = [MessageBlock(**b) for b in (row.ai_message or [])]
                 ai_msg = Message(
                     role="ai",
                     content="",
-                    blocks=row.ai_message or [],
-                    message_id=row.id
+                    blocks=ai_blocks,
+                    message_id=row.id,
                 )
                 messages.append(ai_msg)
 
