@@ -7,6 +7,6 @@ On the tests we prefer to use a small Postgres container and run the migration o
 
 Right now we have unit tests for the repository and service layers. We need more tests for the modules that remain untested. 
 
-Tests should follow the arrange, act, assert pattern. Tests should be idempotent. 
+Tests should follow the arrange, act, assert pattern. Tests should be idempotent. Assertions must be meaningful or else the test is worthless.
 
 Don't touch the UI for now. 
