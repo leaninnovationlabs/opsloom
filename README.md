@@ -67,6 +67,21 @@ Run the docs server using the following command
 npm i
 npm run docs:dev
 ```
+
+## Running the tests
+
+Use the Makefile to start a Postgres container, apply migrations and run
+the unit tests:
+
+```bash
+make test
+```
+
+You can also run the tests directly using `pytest` through uv:
+
+```bash
+uv run pytest -q
+```
 -------------------
 
 # Database Migrations Scripts

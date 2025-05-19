@@ -1,21 +1,8 @@
-import os
 import pytest
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.api.account.repository import AccountRepository
 from backend.api.account.models import AccountCreate, AccountUpdate
-from backend.api.account.account_schema import AccountORM
-
-DATABASE_URL = os.getenv("POSTGRES_CONNECTION_STRING", "postgresql+asyncpg://myuser:mypassword@localhost:5432/ragdb")
-
-engine = create_async_engine(DATABASE_URL, future=True)
-AsyncSessionLocal = sessionmaker(bind=engine, expire_on_commit=False, class_=AsyncSession)
-
-@pytest.fixture
-async def session():
-    async with AsyncSessionLocal() as session:
-        yield session
 
 @pytest.mark.asyncio
 async def test_create_and_get_account(session: AsyncSession):
