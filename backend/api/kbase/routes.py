@@ -4,7 +4,7 @@ from backend.api.kbase.models import KnowledgeBase, KnowledgeBaseList
 from backend.api.kbase.services import KbaseService
 from backend.api.kbase.repository import KbaseRepository
 from backend.util.auth_utils import validate_user, TokenData
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 from backend.util.domain_utils import extract_subdomain
 from backend.util.database import get_async_session  # your async session dependency
 from sqlalchemy.ext.asyncio import AsyncSession

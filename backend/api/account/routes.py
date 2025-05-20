@@ -12,7 +12,7 @@ from backend.lib.exceptions import (
     AccountNotFoundError
 )
 from backend.util.auth_utils import validate_user, TokenData
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 from backend.util.database import get_async_session
 
 logger = SetupLogging()

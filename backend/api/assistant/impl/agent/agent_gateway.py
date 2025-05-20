@@ -1,4 +1,4 @@
-import logging
+from backend.util.log_setup import SetupLogging
 import json
 import logfire
 from typing import Optional, List, AsyncIterator
@@ -27,7 +27,7 @@ from .schemas import (
 from .client import HotelApiClient
 from .tools import register_agent_tools
 
-logger = logging.getLogger(__name__)
+logger = SetupLogging()
 
 
 class AgentGateway(BaseAssistantGateway):

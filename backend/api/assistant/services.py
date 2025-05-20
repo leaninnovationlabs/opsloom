@@ -4,7 +4,7 @@ from backend.api.assistant.models import (
     Assistant, AssistantList
 )
 from .repository import AssistantRepository
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 
 logger = SetupLogging()
 

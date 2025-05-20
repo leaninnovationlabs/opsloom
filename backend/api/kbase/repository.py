@@ -5,7 +5,7 @@ from sqlalchemy import select, update, delete
 from sqlalchemy.exc import IntegrityError
 from backend.api.kbase.kbase_schema import KnowledgeBaseORM
 from backend.api.kbase.models import KnowledgeBase, KnowledgeBaseList
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 
 logger = SetupLogging()
 

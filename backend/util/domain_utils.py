@@ -1,5 +1,5 @@
 from fastapi import Request
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 
 logger = SetupLogging()
 

@@ -1,4 +1,4 @@
-import logging
+from backend.util.log_setup import SetupLogging
 import os
 import datetime
 import asyncio
@@ -18,7 +18,7 @@ from psycopg2.extras import RealDictCursor
 # Import the ChatFactory to create the LLM instance.
 from backend.api.chat.chat_factory import ChatFactory
 
-logger = logging.getLogger(__name__)
+logger = SetupLogging()
 
 class TextToSQL(BaseAssistantGateway):
     __slots__ = ("assistant", "message_gateway", "llm", "postgres_conn_str", "table_name", "db_schema")

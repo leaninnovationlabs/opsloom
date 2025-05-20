@@ -1,4 +1,4 @@
-import logging
+from backend.util.log_setup import SetupLogging
 import os
 from typing import AsyncIterator, List, Optional
 
@@ -8,7 +8,7 @@ from backend.api.chat.repository import ChatRepository
 from backend.api.assistant.base_assistant_gateway import BaseAssistantGateway
 from backend.api.chat.chat_factory import ChatFactory
 
-logger = logging.getLogger(__name__)
+logger = SetupLogging()
 
 class NoRagAssistant(BaseAssistantGateway):
     __slots__ = ("assistant", "message_gateway", "llm")

@@ -7,7 +7,7 @@ from .schemas import (
     CreateReservationRequest,
     ActionURLSchema  # Import the new schema
 )
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 from backend.util.config import get_config_value
 
 logger = SetupLogging()

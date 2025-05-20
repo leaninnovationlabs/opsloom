@@ -1,7 +1,7 @@
 from uuid import UUID
 from backend.api.account.models import Account, AccountCreate, AccountUpdate, AccountConfigResponse
 from backend.lib.exceptions import AccountAlreadyExistsError, DatabaseError, AccountNotFoundError
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 from .repository import AccountRepository
 
 logger = SetupLogging()

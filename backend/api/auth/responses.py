@@ -2,7 +2,7 @@ import json
 from fastapi import Response
 from backend.api.auth.models import LoggedInUser, User
 from backend.util.config import get_config_value
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 import os
 
 logger = SetupLogging()
