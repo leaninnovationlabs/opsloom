@@ -2,7 +2,7 @@ from backend.api.auth.models import User, UserCreate, LoggedInUser, UserLogin
 from backend.api.account.services import AccountService
 from backend.api.auth.repository import UserRepository
 from backend.util.auth_utils import TokenData, create_access_token, PasswordService
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 
 logger = SetupLogging()
 

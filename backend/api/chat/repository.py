@@ -11,7 +11,7 @@ from backend.api.chat.models import (
     AgentMessages,
     MessageBlock,
 )
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 from sqlalchemy.sql import func
 from pydantic_ai.messages import ModelMessagesTypeAdapter
 

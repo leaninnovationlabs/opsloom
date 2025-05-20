@@ -2,7 +2,7 @@ from typing import Optional
 from uuid import UUID
 from backend.api.kbase.models import KnowledgeBase, KnowledgeBaseList
 from .repository import KbaseRepository
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 
 logger = SetupLogging()
 

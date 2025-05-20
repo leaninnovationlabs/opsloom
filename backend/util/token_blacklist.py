@@ -1,7 +1,7 @@
 import time
 from typing import Dict, Optional
 from datetime import datetime
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 
 logger = SetupLogging()
 

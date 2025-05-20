@@ -3,7 +3,7 @@ from typing import Optional
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 
 from backend.api.account.account_schema import AccountORM
 from backend.api.account.models import (

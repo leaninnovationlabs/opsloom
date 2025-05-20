@@ -14,7 +14,7 @@ from backend.lib.exceptions import (
     DatabaseError
 )
 from backend.util.config import get_config
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 
 logger = SetupLogging()
 

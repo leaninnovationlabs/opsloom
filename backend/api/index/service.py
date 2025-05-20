@@ -10,7 +10,7 @@ from backend.api.kbase.models import Document, Chunk
 from backend.api.kbase.pgvectorstore import PostgresVectorStore
 from backend.api.kbase.embedder_factory import get_embedder  # The embedder factory
 from sqlalchemy.ext.asyncio import AsyncSession
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 
 logger = SetupLogging()
 

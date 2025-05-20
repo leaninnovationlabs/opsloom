@@ -1,3 +1,4 @@
+from backend.util.log_setup import SetupLogging
 import logging
 import os
 from typing import AsyncIterator, List, Optional
@@ -14,7 +15,7 @@ from backend.api.assistant.base_assistant_gateway import BaseAssistantGateway
 
 from backend.api.chat.models import OpsLoomMessageChunk 
 
-logger = logging.getLogger(__name__)
+logger = SetupLogging()
 logging.basicConfig(level=logging.DEBUG)
 
 ENV_RERANK = get_config_value("RERANK") == "true"

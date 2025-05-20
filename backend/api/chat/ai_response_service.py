@@ -9,7 +9,7 @@ from backend.api.kbase.repository import KbaseRepository
 from backend.api.chat.repository import ChatRepository, AgentMessagesRepository
 from backend.api.session.repository import SessionRepository
 from backend.api.chat.models import ChatRequest
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 from backend.util.auth_utils import TokenData
 
 logger = SetupLogging()

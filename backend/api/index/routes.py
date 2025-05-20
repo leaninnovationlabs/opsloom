@@ -4,7 +4,7 @@ from backend.api.index.models import IndexResponse
 from backend.util.auth_utils import validate_user, TokenData
 from backend.api.index.service import IndexService
 from backend.util.database import get_async_session
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 
 router = APIRouter()
 logger = SetupLogging()

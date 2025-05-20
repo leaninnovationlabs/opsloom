@@ -7,7 +7,7 @@ from backend.api.session.models import (
 from backend.api.session.repository import SessionRepository
 from backend.api.kbase.repository import KbaseRepository
 from backend.api.assistant.repository import AssistantRepository
-from backend.util.logging import SetupLogging
+from backend.util.log_setup import SetupLogging
 from backend.util.auth_utils import TokenData
 from sqlalchemy.ext.asyncio import AsyncSession
 
