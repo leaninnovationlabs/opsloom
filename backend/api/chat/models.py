@@ -4,10 +4,20 @@ from uuid import UUID, uuid4
 from typing_extensions import NotRequired, TypedDict
 from pydantic_ai.messages import ModelMessage
 
+
+class MessageBlock(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
+    type: str
+    text: Optional[str] = None
+    content: Optional[str] = None
+    data: Optional[Any] = None
+    config: Optional[Dict[str, Any]] = None
+
 class Message(BaseModel):
     role: str = "user"
     content: str
-    blocks: List[Dict[str, Any]] = Field(default_factory=list)
+    blocks: List[MessageBlock] = Field(default_factory=list)
     message_id: UUID = Field(default_factory=uuid4)
 
 class AgentMessages(BaseModel):
@@ -45,7 +55,7 @@ class AIResponse(BaseModel):
     sources: List[Source] = Field(default_factory=list)
     relevance_score: float = 0.0
     message_id: UUID = Field(default_factory=uuid4)
-    blocks: List[Dict[str, Any]] = Field(default_factory=list)  # Add this line
+    blocks: List[MessageBlock] = Field(default_factory=list)
 
 class MessageList(BaseModel):
     messages: List[Message]

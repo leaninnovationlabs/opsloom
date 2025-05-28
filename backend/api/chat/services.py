@@ -10,7 +10,8 @@ from backend.api.chat.models import (
     Message,
     MessagePair,
     ChatRequest,
-    AIResponse
+    AIResponse,
+    MessageBlock,
 )
 from backend.api.chat.repository import ChatRepository, AgentMessagesRepository
 from backend.api.chat.ai_response_service import AIResponseService
@@ -97,7 +98,7 @@ class ChatService:
             title_sent = False
 
         # We'll store an interim 'block_content'
-        block_content = {}
+        block_content: MessageBlock | None = None
 
         async def response_stream():
             nonlocal full_resp, title_sent, block_content, title_future
@@ -114,52 +115,46 @@ class ChatService:
 
                 # Construct a 'block_content' for JSON. Customize to your UI needs:
                 if chunk_type == "text":
-                    block_content = {
-                        "type": "text",
-                        "text": full_resp.content
-                    }
+                    block_content = MessageBlock(type="text", text=full_resp.content)
                 elif chunk_type == "table":
-                    block_content = {
-                        "type": "table",
-                        "data": content_str,
-                        "config": {
+                    block_content = MessageBlock(
+                        type="table",
+                        data=content_str,
+                        config={
                             "title": response_md.get("title", ""),
                             "description": response_md.get("description", ""),
-                        }
-                    }
+                        },
+                    )
                 elif chunk_type == "dialog":
-                    block_content = {
-                        "type": "dialog",
-                        "content": content_str,
-                        "config": {
+                    block_content = MessageBlock(
+                        type="dialog",
+                        content=content_str,
+                        config={
                             "title": response_md.get("title", ""),
                             "description": response_md.get("description", ""),
-                            "actions": response_md.get("actions", [])
-                        }
-                    }
+                            "actions": response_md.get("actions", []),
+                        },
+                    )
                 elif chunk_type == "barchart":
-                    block_content = {
-                        "type": "barchart",
-                        "data": content_str,
-                        "config": {
+                    block_content = MessageBlock(
+                        type="barchart",
+                        data=content_str,
+                        config={
                             "title": response_md.get("title", ""),
                             "description": response_md.get("description", ""),
                             "xAxis": response_md.get("xAxis", ""),
                             "yAxis": response_md.get("yAxis", ""),
                             "explanation": response_md.get("explanation", ""),
-                        }
-                    }
+                        },
+                    )
                 else:
-                    block_content = {
-                        "type": chunk_type,
-                        "content": content_str
-                    }
+                    block_content = MessageBlock(type=chunk_type, content=content_str)
 
                 # Build partial chunk_data to yield
                 chunk_data = {
                     "message_id": str(full_resp.message_id),
                     "assistant_id": str(assistant_id_uuid),
-                    "blocks": [block_content],
+                    "blocks": [block_content.model_dump()],
                 }
 
                 # If we are generating a new title asynchronously, attach it once it's ready
@@ -178,9 +173,7 @@ class ChatService:
             full_resp.blocks = [block_content] if block_content else []
 
             # 3) Store the user's question as a single text block
-            request.message.blocks = [
-                {"type": "text", "text": request.message.content}
-            ]
+            request.message.blocks = [MessageBlock(type="text", text=request.message.content)]
 
             # 4) If we never attached the title during the loop, do it now
             if title_future and not title_sent:
