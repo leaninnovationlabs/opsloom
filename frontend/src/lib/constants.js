@@ -34,7 +34,8 @@ export const BACKEND_URL = (
   ) : (
     // Production URL  
     // `${root?.dataset?.apiUrl ?? ""}/opsloom-api/v1`
-    "https://chat.opsloom.io/opsloom-api/v1"
+    // "https://chat.opsloom.io/opsloom-api/v1"
+    "/opsloom-api/v1"
   )
 
 console.log("BACKEND_URL:", BACKEND_URL);
